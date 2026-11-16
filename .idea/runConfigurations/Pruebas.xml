@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Pruebas de reglas de negocio" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="huertos.pruebas.PruebasReglasNegocio" />
+    <module name="HuertosComunitarios" />
+    <option name="VM_PARAMETERS" value="-Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
