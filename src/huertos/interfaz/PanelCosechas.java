@@ -58,7 +58,7 @@ public class PanelCosechas extends JPanel implements Actualizable {
         setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
         cmbCultivo.setName("cmbCultivoCosecha");
 
-        add(Componentes.encabezado("Módulo 4 · Gestión de cosechas y reparto  (responsable: Pruebas)",
+        add(Componentes.encabezado("Módulo 4 · Gestión de cosechas y reparto  –  Responsable: Joseph Vásquez (Pruebas)",
                 "RF-10 Registrar cosecha   ·   RF-11 Calcular el reparto de la cosecha   ·   "
                         + "RF-12 Generar el reporte de producción"), BorderLayout.NORTH);
 

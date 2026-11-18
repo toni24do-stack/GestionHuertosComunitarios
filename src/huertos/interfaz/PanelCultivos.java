@@ -62,7 +62,7 @@ public class PanelCultivos extends JPanel implements Actualizable {
         cmbNuevoEstado.setName("cmbNuevoEstado");
         cmbCausa.setName("cmbCausa");
 
-        add(Componentes.encabezado("Módulo 2 · Gestión de parcelas y cultivos  (responsable: Análisis y diseño)",
+        add(Componentes.encabezado("Módulo 2 · Gestión de parcelas y cultivos  –  Responsable: Karen Quimbiulco (Análisis y diseño)",
                 "RF-04 Gestionar parcelas   ·   RF-05 Registrar siembra   ·   RF-06 Actualizar el estado del cultivo"),
                 BorderLayout.NORTH);
 
