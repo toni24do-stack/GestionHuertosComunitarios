@@ -67,7 +67,7 @@ public class PanelLabores extends JPanel implements Actualizable {
         cmbFiltroResponsable.setName("cmbFiltroResponsable");
         cmbFiltroCultivo.setName("cmbFiltroCultivo");
 
-        add(Componentes.encabezado("Módulo 3 · Gestión de labores  –  Responsable: Sebastián Tipantuña (Desarrollo)",
+        add(Componentes.encabezado("Módulo 3 · Gestión de labores  (responsable: Desarrollo)",
                 "RF-07 Programar labores   ·   RF-08 Registrar el cumplimiento   ·   RF-09 Agenda de labores y alertas"),
                 BorderLayout.NORTH);
 

@@ -48,7 +48,7 @@ public class PanelParticipantes extends JPanel implements Actualizable {
         setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
         cmbRol.setName("cmbRol");
 
-        add(Componentes.encabezado("Módulo 1 · Gestión de participantes  –  Responsable: Antonio Encalada (Líder)",
+        add(Componentes.encabezado("Módulo 1 · Gestión de participantes  (responsable: Líder)",
                 "RF-01 Registrar participante   ·   RF-02 Consultar, actualizar y eliminar   ·   "
                         + "RF-03 Calcular la participación de cada integrante"), BorderLayout.NORTH);
 
