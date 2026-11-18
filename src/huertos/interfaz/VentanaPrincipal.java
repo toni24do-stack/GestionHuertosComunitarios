@@ -20,7 +20,7 @@ import java.time.LocalDate;
 
 public class VentanaPrincipal extends JFrame {
     public VentanaPrincipal(Huerto huerto) {
-        super("Gestión de huertos comunitarios – Programación II");
+        super("Gestión de huertos comunitarios");
 
         GestorParticipantes gestorParticipantes = new GestorParticipantes(huerto);
         GestorCultivos gestorCultivos = new GestorCultivos(huerto);
@@ -29,10 +29,10 @@ public class VentanaPrincipal extends JFrame {
 
         final JTabbedPane pestanas = new JTabbedPane();
         pestanas.setName("pestanas");
-        pestanas.addTab("M1 · Participantes", new PanelParticipantes(gestorParticipantes));
-        pestanas.addTab("M2 · Parcelas y cultivos", new PanelCultivos(gestorCultivos));
-        pestanas.addTab("M3 · Labores", new PanelLabores(gestorLabores, gestorParticipantes, gestorCultivos));
-        pestanas.addTab("M4 · Cosechas y reparto", new PanelCosechas(gestorCosechas, gestorCultivos));
+        pestanas.addTab("Participantes", new PanelParticipantes(gestorParticipantes));
+        pestanas.addTab("Parcelas y cultivos", new PanelCultivos(gestorCultivos));
+        pestanas.addTab("Labores", new PanelLabores(gestorLabores, gestorParticipantes, gestorCultivos));
+        pestanas.addTab("Cosechas y reparto", new PanelCosechas(gestorCosechas, gestorCultivos));
         pestanas.setFont(pestanas.getFont().deriveFont(Font.BOLD, 13f));
         pestanas.addChangeListener(e -> {
             Actualizable pantalla = (Actualizable) pestanas.getSelectedComponent();
@@ -50,8 +50,7 @@ public class VentanaPrincipal extends JFrame {
         barraSuperior.add(titulo, BorderLayout.WEST);
         barraSuperior.add(fecha, BorderLayout.EAST);
 
-        JLabel barraEstado = new JLabel("  Datos de ejemplo cargados al iniciar. Los datos se guardan en memoria "
-                + "mientras la aplicación está abierta.");
+        JLabel barraEstado = new JLabel("  Seleccione una pestaña para empezar. Los cambios se mantienen mientras la aplicación está abierta.");
         barraEstado.setBorder(BorderFactory.createEmptyBorder(4, 6, 4, 6));
         barraEstado.setForeground(Color.DARK_GRAY);
 

@@ -62,11 +62,11 @@ public class PanelCultivos extends JPanel implements Actualizable {
         cmbNuevoEstado.setName("cmbNuevoEstado");
         cmbCausa.setName("cmbCausa");
 
-        add(Componentes.encabezado("Módulo 2 · Gestión de parcelas y cultivos  (responsable: Análisis y diseño)",
-                "RF-04 Gestionar parcelas   ·   RF-05 Registrar siembra   ·   RF-06 Actualizar el estado del cultivo"),
+        add(Componentes.encabezado("Parcelas y cultivos",
+                "Administre las parcelas, registre las siembras y actualice el estado de cada cultivo."),
                 BorderLayout.NORTH);
 
-        Componentes.Formulario formParcela = new Componentes.Formulario("RF-04 · Parcela", 2)
+        Componentes.Formulario formParcela = new Componentes.Formulario("Parcela", 2)
                 .agregar("Código:", txtCodigo)
                 .agregar("Área (m²):", txtArea)
                 .agregar("Ubicación:", txtUbicacion)
@@ -83,7 +83,7 @@ public class PanelCultivos extends JPanel implements Actualizable {
         parcelas.add(Componentes.conBorde(tablaParcelas, "Parcelas del huerto"), BorderLayout.CENTER);
 
         txtFechaSiembra.setText(Formato.fecha(LocalDate.now()));
-        Componentes.Formulario formSiembra = new Componentes.Formulario("RF-05 · Registrar siembra", 1)
+        Componentes.Formulario formSiembra = new Componentes.Formulario("Nueva siembra", 1)
                 .agregar("Parcela:", cmbParcela)
                 .agregar("Cultivo (catálogo):", cmbTipo)
                 .agregar("Variedad:", txtVariedad)
@@ -91,7 +91,7 @@ public class PanelCultivos extends JPanel implements Actualizable {
                 .agregar("Área sembrada (m²):", txtAreaSiembra);
         JPanel siembra = new JPanel(new BorderLayout());
         siembra.add(formSiembra, BorderLayout.NORTH);
-        siembra.add(Componentes.fila(Componentes.boton("Registrar siembra (RF-05)", "btnSiembra",
+        siembra.add(Componentes.fila(Componentes.boton("Registrar siembra", "btnSiembra",
                 e -> registrarSiembra())), BorderLayout.CENTER);
 
         JPanel arriba = new JPanel(new GridLayout(1, 2, 8, 0));
@@ -100,8 +100,8 @@ public class PanelCultivos extends JPanel implements Actualizable {
 
         JPanel estados = new JPanel(new BorderLayout(0, 4));
         estados.add(Componentes.fila(new JLabel("Nuevo estado:"), cmbNuevoEstado, new JLabel("Causa (si se pierde):"),
-                cmbCausa, Componentes.boton("Cambiar estado (RF-06)", "btnCambiarEstado", e -> cambiarEstado()),
-                Componentes.boton("Revisar cultivos listos (RF-06)", "btnPropuestas", e -> revisarPropuestas())),
+                cmbCausa, Componentes.boton("Cambiar estado", "btnCambiarEstado", e -> cambiarEstado()),
+                Componentes.boton("Revisar cultivos listos", "btnPropuestas", e -> revisarPropuestas())),
                 BorderLayout.NORTH);
         estados.add(Componentes.conBorde(tablaCultivos, "Cultivos (seleccione uno para cambiar su estado)"),
                 BorderLayout.CENTER);

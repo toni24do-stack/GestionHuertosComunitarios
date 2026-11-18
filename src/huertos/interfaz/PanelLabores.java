@@ -67,8 +67,8 @@ public class PanelLabores extends JPanel implements Actualizable {
         cmbFiltroResponsable.setName("cmbFiltroResponsable");
         cmbFiltroCultivo.setName("cmbFiltroCultivo");
 
-        add(Componentes.encabezado("Módulo 3 · Gestión de labores  (responsable: Desarrollo)",
-                "RF-07 Programar labores   ·   RF-08 Registrar el cumplimiento   ·   RF-09 Agenda de labores y alertas"),
+        add(Componentes.encabezado("Labores del huerto",
+                "Programe las tareas de cuidado, registre las que ya se hicieron y revise la agenda de la semana."),
                 BorderLayout.NORTH);
 
         LocalDate hoy = LocalDate.now();
@@ -77,7 +77,7 @@ public class PanelLabores extends JPanel implements Actualizable {
         txtFechaRealizacion.setText(Formato.fecha(hoy));
         txtSemana.setText(Formato.fecha(hoy));
 
-        Componentes.Formulario formProgramar = new Componentes.Formulario("RF-07 · Programar labor", 1)
+        Componentes.Formulario formProgramar = new Componentes.Formulario("Programar labor", 1)
                 .agregar("Tipo de labor:", cmbTipo)
                 .agregar("Cultivo:", cmbCultivo)
                 .agregar("Responsable:", cmbResponsable)
@@ -86,18 +86,18 @@ public class PanelLabores extends JPanel implements Actualizable {
         JPanel programar = new JPanel(new BorderLayout());
         programar.add(formProgramar, BorderLayout.CENTER);
         programar.add(Componentes.fila(
-                Componentes.boton("Programar (RF-07)", "btnProgramar", e -> programar()),
+                Componentes.boton("Programar", "btnProgramar", e -> programar()),
                 Componentes.boton("Reprogramar selección", "btnReprogramar", e -> reprogramar()),
                 Componentes.boton("Cancelar selección", "btnCancelarLabor", e -> cancelar())), BorderLayout.SOUTH);
 
         Componentes.Formulario formCumplimiento = new Componentes.Formulario(
-                "RF-08 · Registrar cumplimiento (labor seleccionada en la agenda)", 1)
+                "Registrar labor realizada (seleccione la labor en la agenda)", 1)
                 .agregar("Fecha de realización:", txtFechaRealizacion)
                 .agregar("Horas trabajadas (0,5 a 8):", txtHoras)
                 .agregar("Observaciones:", txtObservaciones);
         JPanel cumplimiento = new JPanel(new BorderLayout());
         cumplimiento.add(formCumplimiento, BorderLayout.NORTH);
-        cumplimiento.add(Componentes.fila(Componentes.boton("Registrar cumplimiento (RF-08)", "btnCumplimiento",
+        cumplimiento.add(Componentes.fila(Componentes.boton("Registrar labor realizada", "btnCumplimiento",
                 e -> registrarCumplimiento())), BorderLayout.CENTER);
 
         JPanel arriba = new JPanel(new GridLayout(1, 2, 8, 0));
@@ -107,11 +107,11 @@ public class PanelLabores extends JPanel implements Actualizable {
         JPanel agenda = new JPanel(new BorderLayout(0, 4));
         agenda.add(Componentes.fila(new JLabel("Semana del día:"), txtSemana, new JLabel("Responsable:"),
                 cmbFiltroResponsable, new JLabel("Cultivo:"), cmbFiltroCultivo,
-                Componentes.boton("Generar agenda (RF-09)", "btnAgenda", e -> generarAgenda())), BorderLayout.NORTH);
+                Componentes.boton("Ver agenda", "btnAgenda", e -> generarAgenda())), BorderLayout.NORTH);
         agenda.add(Componentes.conBorde(tablaAgenda,
                 "Agenda de la semana + labores atrasadas de semanas anteriores (en rojo)"), BorderLayout.CENTER);
         lblResumen.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createTitledBorder("RF-09 · Alertas"), BorderFactory.createEmptyBorder(2, 8, 4, 8)));
+                BorderFactory.createTitledBorder("Alertas"), BorderFactory.createEmptyBorder(2, 8, 4, 8)));
         agenda.add(lblResumen, BorderLayout.SOUTH);
         tablaAgenda.setDefaultRenderer(Object.class, new RenderizadorEstado());
 

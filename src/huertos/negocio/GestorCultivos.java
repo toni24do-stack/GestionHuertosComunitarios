@@ -116,7 +116,7 @@ public class GestorCultivos {
             throw new ReglaNegocioException("Seleccione el nuevo estado.");
         }
         if (nuevo == EstadoCultivo.COSECHADO) {
-            throw new ReglaNegocioException("El estado «Cosechado» se asigna al registrar la cosecha (RF-10).");
+            throw new ReglaNegocioException("El estado «Cosechado» se asigna al registrar la cosecha en la pestaña «Cosechas y reparto».");
         }
         if (!cultivo.getEstado().puedeCambiarA(nuevo)) {
             throw new ReglaNegocioException("Transición no válida: un cultivo «" + cultivo.getEstado()

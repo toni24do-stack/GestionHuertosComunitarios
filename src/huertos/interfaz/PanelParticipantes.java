@@ -48,9 +48,8 @@ public class PanelParticipantes extends JPanel implements Actualizable {
         setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
         cmbRol.setName("cmbRol");
 
-        add(Componentes.encabezado("Módulo 1 · Gestión de participantes  (responsable: Líder)",
-                "RF-01 Registrar participante   ·   RF-02 Consultar, actualizar y eliminar   ·   "
-                        + "RF-03 Calcular la participación de cada integrante"), BorderLayout.NORTH);
+        add(Componentes.encabezado("Participantes del huerto",
+                "Registre a las personas del huerto, actualice sus datos y revise cuántas horas ha trabajado cada una."), BorderLayout.NORTH);
 
         Componentes.Formulario formulario = new Componentes.Formulario("Datos del participante", 3)
                 .agregar("Cédula:", txtCedula)
@@ -60,9 +59,9 @@ public class PanelParticipantes extends JPanel implements Actualizable {
                 .agregar("Rol en el huerto:", cmbRol)
                 .agregar("Fecha de ingreso:", txtFechaIngreso);
         JPanel botones = Componentes.fila(
-                Componentes.boton("Registrar (RF-01)", "btnRegistrar", e -> registrar()),
-                Componentes.boton("Actualizar (RF-02)", "btnActualizar", e -> actualizarDatos()),
-                Componentes.boton("Eliminar (RF-02)", "btnEliminar", e -> eliminar()),
+                Componentes.boton("Registrar", "btnRegistrar", e -> registrar()),
+                Componentes.boton("Actualizar", "btnActualizar", e -> actualizarDatos()),
+                Componentes.boton("Eliminar", "btnEliminar", e -> eliminar()),
                 Componentes.boton("Activar / desactivar", "btnEstado", e -> cambiarEstado()),
                 Componentes.boton("Limpiar", "btnLimpiar", e -> limpiar()),
                 new JLabel("   Buscar por cédula o nombre:"), txtBuscar,
@@ -80,10 +79,10 @@ public class PanelParticipantes extends JPanel implements Actualizable {
         txtHasta.setText(Formato.fecha(hoy));
         JPanel participacion = new JPanel(new BorderLayout(0, 4));
         participacion.add(Componentes.fila(new JLabel("Desde:"), txtDesde, new JLabel("Hasta:"), txtHasta,
-                Componentes.boton("Calcular participación (RF-03)", "btnParticipacion", e -> calcularParticipacion()),
+                Componentes.boton("Calcular participación", "btnParticipacion", e -> calcularParticipacion()),
                 lblParticipacion), BorderLayout.NORTH);
         participacion.add(Componentes.conBorde(Componentes.tabla(modeloParticipacion, "tablaParticipacion"),
-                "RF-03 · Participación en el período (horas de labores completadas)"), BorderLayout.CENTER);
+                "Participación en el período (horas de labores completadas)"), BorderLayout.CENTER);
 
         JSplitPane division = new JSplitPane(JSplitPane.VERTICAL_SPLIT, registro, participacion);
         division.setResizeWeight(0.6);
@@ -169,8 +168,8 @@ public class PanelParticipantes extends JPanel implements Actualizable {
                         r.getParticipante().getEstado()});
                 total = total + r.getHoras();
             }
-            lblParticipacion.setText("   Total del grupo: " + Formato.decimal(total) + " h   ·   Regla: sin labores "
-                    + "completadas en " + GestorParticipantes.DIAS_INACTIVIDAD + " días → «Inactivo».");
+            lblParticipacion.setText("   Total del grupo: " + Formato.decimal(total) + " h   ·   Quien pasa "
+                    + GestorParticipantes.DIAS_INACTIVIDAD + " días sin completar labores queda como «Inactivo».");
             actualizar();
         } catch (RuntimeException ex) {
             Componentes.error(this, ex);

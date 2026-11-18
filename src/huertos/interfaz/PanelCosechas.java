@@ -58,9 +58,8 @@ public class PanelCosechas extends JPanel implements Actualizable {
         setBorder(BorderFactory.createEmptyBorder(8, 8, 8, 8));
         cmbCultivo.setName("cmbCultivoCosecha");
 
-        add(Componentes.encabezado("Módulo 4 · Gestión de cosechas y reparto  (responsable: Pruebas)",
-                "RF-10 Registrar cosecha   ·   RF-11 Calcular el reparto de la cosecha   ·   "
-                        + "RF-12 Generar el reporte de producción"), BorderLayout.NORTH);
+        add(Componentes.encabezado("Cosechas y reparto",
+                "Registre lo cosechado, reparta la cosecha según las horas trabajadas y revise la producción del huerto."), BorderLayout.NORTH);
 
         LocalDate hoy = LocalDate.now();
         txtFecha.setText(Formato.fecha(hoy));
@@ -71,26 +70,26 @@ public class PanelCosechas extends JPanel implements Actualizable {
         JPanel cosechas = new JPanel(new BorderLayout(0, 4));
         cosechas.add(Componentes.fila(new JLabel("Cultivo listo para cosecha:"), cmbCultivo,
                 new JLabel("Fecha:"), txtFecha, new JLabel("Cantidad (kg):"), txtKg,
-                Componentes.boton("Registrar cosecha (RF-10)", "btnCosecha", e -> registrarCosecha())),
+                Componentes.boton("Registrar cosecha", "btnCosecha", e -> registrarCosecha())),
                 BorderLayout.NORTH);
         cosechas.add(Componentes.conBorde(tablaCosechas, "Cosechas registradas (seleccione una para repartirla)"),
                 BorderLayout.CENTER);
 
         JPanel reparto = new JPanel(new BorderLayout(0, 4));
         reparto.add(Componentes.fila(new JLabel("Reserva del grupo (%):"), txtReserva,
-                Componentes.boton("Calcular reparto (RF-11)", "btnCalcularReparto", e -> calcularReparto()),
+                Componentes.boton("Calcular reparto", "btnCalcularReparto", e -> calcularReparto()),
                 Componentes.boton("Guardar reparto", "btnGuardarReparto", e -> guardarReparto())), BorderLayout.NORTH);
         reparto.add(Componentes.conBorde(Componentes.tabla(modeloReparto, "tablaReparto"),
-                "RF-11 · Reparto proporcional a las horas trabajadas en el cultivo"), BorderLayout.CENTER);
+                "Reparto según las horas trabajadas en el cultivo"), BorderLayout.CENTER);
         reparto.add(lblReparto, BorderLayout.SOUTH);
 
         JPanel reporte = new JPanel(new BorderLayout(0, 4));
         reporte.add(Componentes.fila(new JLabel("Desde:"), txtDesde, new JLabel("Hasta:"), txtHasta,
-                Componentes.boton("Generar reporte (RF-12)", "btnReporte", e -> generarReporte())), BorderLayout.NORTH);
+                Componentes.boton("Generar reporte", "btnReporte", e -> generarReporte())), BorderLayout.NORTH);
         reporte.add(Componentes.conBorde(Componentes.tabla(modeloReporte, "tablaReporte"),
-                "RF-12 · Producción por cultivo"), BorderLayout.CENTER);
+                "Producción por cultivo"), BorderLayout.CENTER);
         lblIndicadores.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createTitledBorder("RF-12 · Indicadores"), BorderFactory.createEmptyBorder(2, 8, 4, 8)));
+                BorderFactory.createTitledBorder("Resumen de producción"), BorderFactory.createEmptyBorder(2, 8, 4, 8)));
         reporte.add(lblIndicadores, BorderLayout.SOUTH);
 
         JPanel abajo = new JPanel(new GridLayout(1, 2, 8, 0));
